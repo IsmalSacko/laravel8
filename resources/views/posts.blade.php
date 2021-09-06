@@ -21,6 +21,17 @@
                         Il n'y a pas d'articles pour le moment
                     </div>
                   @endif
+                  <div class="row">
+                          <h3 @class('text-center')>Commentaires</h3>
+                      <hr>
+                              @foreach($comments as $c)
+                          <div class="col-md-4 mt-2 mb-4">
+
+                              <a href="{{route('post_show',['id' =>$c->post_id]) }}">{{$c->content}}</a>
+                          </div>
+                              @endforeach
+                  </div>
+
               </div>
           </div>
 @endsection

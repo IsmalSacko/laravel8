@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use PhpParser\Builder\Function_;
@@ -11,8 +12,9 @@ class PostController extends Controller
 {
     public function index(){
         $post = Post::orderBy('created_at', 'DESC')->get();
+        $comments = Comment::all();
 
-        return view('posts',compact('post'));
+        return view('posts',compact('post', 'comments'));
     }
     public  function show($id){
         $post = Post::find($id);
